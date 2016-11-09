@@ -1,6 +1,6 @@
 # Redux Airbrake
 
-Redux middleware for Airbrake error logging
+Redux middleware for [Airbrake](https://github.com/airbrake/airbrake-js) error logging
 
 #### Why add Airbrake via Redux middleware?
 Because Redux contains the state of your whole application and is aware of the last action dispatched before each error. This is useful information we want the error log to contain so we've added this to the params object in Airbrake.
