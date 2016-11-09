@@ -34,7 +34,7 @@ export const store = createStore(
 export default store;
 ```
 
-#### 5. Add notice metadata (optional)
+#### Adding notice metadata (optional)
 
 ``` js
 const errorMiddleware = airbrakeMiddleware({
