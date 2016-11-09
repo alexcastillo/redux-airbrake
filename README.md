@@ -17,18 +17,13 @@ npm install airbrake-js redux-airbrake --save
 import airbrakeMiddleware from 'redux-airbrake';
 ```
 
-#### 3. Configure middleware
+#### 3. Configure & add middleware
 ``` js
-const airbrakeCredentials = {
+const errorMiddleware = airbrakeMiddleware({
     projectId: '******',
     projectKey: '**************'
-};
+});
 
-const errorMiddleware = airbrakeMiddleware(airbrakeCredentials);
-```
-
-#### 4. Add middleware
-``` js
 export const store = createStore(
     rootReducer,
     applyMiddleware(
@@ -42,10 +37,12 @@ export default store;
 #### 5. Add notice metadata (optional)
 
 ``` js
-const airbrakeNotice = {
+const errorMiddleware = airbrakeMiddleware({
+    projectId: '******',
+    projectKey: '**************'
+}, {
     context: { environment: window.ENV }
-};
-const errorMiddleware = airbrakeMiddleware(airbrakeCredentials, airbrakeNotice);
+});
 ```
 
 ## The MIT License (MIT)

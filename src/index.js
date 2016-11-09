@@ -1,9 +1,12 @@
 
 import airbrakeJs from 'airbrake-js';
 
-const middlewareFactory = (credentials, notify = {}) => {
+export default function middlewareFactory (credentials, notify = {}) {
   if (!credentials) {
-    console.warn('Airbrake credentials must be provided for redux-airbrake middleware.');
+    console.error('Airbrake credentials must be provided for redux-airbrake middleware.');
+    return store => next => action => {
+      next(action);
+    }
   }
 
   const airbrake = new airbrakeJs(credentials);
@@ -15,22 +18,16 @@ const middlewareFactory = (credentials, notify = {}) => {
     airbrake.notify({ ...notify, error });
   };
 
-  return function middlewareStore (store) {
-    return function middlewareNext (next) {
-      return function middlewareAction (action) {
-        try {
-          return next(action);
-        } catch (error) {
-          console.error(error);
-          const params = {
-            reduxAction: action
-          };
-          airbrakeLog(error, params);
-          return error;
-        }
+  return store => next => action => {
+    try {
+      return next(action);
+    } catch (error) {
+      console.error(error);
+      const params = {
+        reduxAction: action
       };
-    };
+      airbrakeLog(error, params);
+      return error;
+    }
   };
-};
-
-export default middlewareFactory;
+}
