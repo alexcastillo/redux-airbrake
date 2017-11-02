@@ -1,6 +1,6 @@
 {
   "name": "redux-airbrake",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Redux middleware for Airbrake error logging",
   "main": "dist/redux-middleware.js",
   "module": "src/index.js",
