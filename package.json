@@ -2,17 +2,15 @@
   "name": "redux-airbrake",
   "version": "0.0.1",
   "description": "Redux middleware for Airbrake error logging",
-  "main": "lib/index.js",
+  "main": "dist/redux-middleware.js",
+  "module": "src/index.js",
+  "lock": false,
   "scripts": {
-    "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
-    "build:cjs": "babel src -d lib",
-    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-airbrake.js",
-    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-airbrake.min.js"
+    "build": "webpack",
+    "prepublish": "npm run build"
   },
   "files": [
-    "dist",
-    "lib",
-    "README.md"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -34,18 +32,16 @@
   "homepage": "https://github.com/alexcastillo/redux-airbrake#readme",
   "peerDependencies": {
     "redux": "3.*",
-    "airbrake-js": "^0.5.9"
+    "airbrake-js": "0.*"
   },
   "devDependencies": {
     "airbrake-js": "^0.5.9",
-    "babel-cli": "^6.18.0",
-    "babel-loader": "^6.2.7",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-preset-es2015": "^6.18.0",
-    "cross-env": "^3.1.3",
-    "json-loader": "^0.5.4",
-    "redux": "^3.6.0",
-    "webpack": "^1.13.3"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2017": "^6.24.1",
+    "webpack": "^3.8.1"
   }
 }
