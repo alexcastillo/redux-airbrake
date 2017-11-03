@@ -25,7 +25,8 @@ export default function middlewareFactory (airbrake, noticeAnnotations = {}) {
       airbrakeNotify({
         error,
         params: {
-          reduxAction: action
+          action,
+          state: store.getState()
         }
       });
       return error;
