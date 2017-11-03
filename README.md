@@ -3,7 +3,7 @@
 Redux middleware for [Airbrake](https://github.com/airbrake/airbrake-js) error logging
 
 #### Why add Airbrake via Redux middleware?
-Because Redux contains the state of your whole application and is aware of the last action dispatched before each error. This is useful information we want the error log to contain so we've added this to the params object in Airbrake.
+Because Redux contains the full state of your application and is aware of the last action dispatched before each error. This information can be very useful when trying to reproduce bugs. Read below to learn how to enable this feature.
 
 ### Setting up
 
@@ -37,13 +37,27 @@ export const store = createStore(
 export default store;
 ```
 
-#### Adding notice annotations (optional)
+#### Sending last action and store state to Airbrake
 
-It's possible to annotate error notices with all sorts of useful information at the time they're captured by supplying it in the object being reported.
+By default, the last action dispatched and the full store state *will not be sent* to Airbrake in the params object.
+To enable these features, simple set these options to `true`.
 
 ``` js
 const errorMiddleware = airbrakeMiddleware(airbrake, {
-    context: { environment: window.ENV }
+    sendLastAction: true,
+    sendState: true
+});
+```
+
+*IMPORTANT*: If you enable either of these options, be mindful you may be sending sensitive information to Airbrake such as credentials, payment information, etc.
+
+#### Adding notice annotations (optional)
+
+It's possible to annotate error notices with all sorts of useful information at the time they're captured by supplying it in the options object.
+
+``` js
+const errorMiddleware = airbrakeMiddleware(airbrake, {
+    noticeAnnotatios: { context: { environment: window.ENV } }
 });
 ```
 

@@ -1,5 +1,9 @@
 
-export default function middlewareFactory (airbrake, noticeAnnotations = {}) {
+export default function middlewareFactory (airbrake, {
+  sendState = false,
+  sendLastAction = false,
+  noticeAnnotations = {}
+} = {}) {
   if (!airbrake || !airbrake.notify) {
     console.error('A valid Airbrake instance must be provided for redux-airbrake.');
     return store => next => action => {
@@ -22,13 +26,14 @@ export default function middlewareFactory (airbrake, noticeAnnotations = {}) {
       return next(action);
     } catch (error) {
       console.error(error);
-      airbrakeNotify({
-        error,
-        params: {
-          action,
-          state: store.getState()
-        }
-      });
+      const params = {};
+      if (sendState) {
+        params.state = store.getState();
+      }
+      if (sendLastAction) {
+        params.action = action;
+      }
+      airbrakeNotify({ error, params });
       return error;
     }
   };
