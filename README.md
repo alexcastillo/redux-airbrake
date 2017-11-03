@@ -40,7 +40,7 @@ export default store;
 #### Sending last action and store state to Airbrake
 
 By default, the last action dispatched and the full store state *will not be sent* to Airbrake in the params object.
-To enable these features, simple set these options to `true`.
+To enable these features, simply set these options to `true`.
 
 ``` js
 const errorMiddleware = airbrakeMiddleware(airbrake, {
