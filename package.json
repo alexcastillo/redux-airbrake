@@ -7,7 +7,7 @@
   "lock": false,
   "scripts": {
     "build": "webpack",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "dist"
