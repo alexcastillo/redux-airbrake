@@ -31,11 +31,11 @@
   },
   "homepage": "https://github.com/alexcastillo/redux-airbrake#readme",
   "peerDependencies": {
-    "redux": "3.*",
-    "airbrake-js": "0.*"
+    "redux": "3.* || 4.*",
+    "@airbrake/browser": "1.*"
   },
   "devDependencies": {
-    "airbrake-js": "^0.5.9",
+    "@airbrake/browser": "^1.0.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

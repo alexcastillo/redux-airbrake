@@ -9,18 +9,18 @@ Because Redux contains the full state of your application and is aware of the la
 
 #### 1. Add dependencies
 ``` bash
-npm install airbrake-js redux-airbrake --save
+npm install @airbrake/browser redux-airbrake --save
 ```
 
 #### 2. Import dependency
 ``` js
-import AirbrakeClient from 'airbrake-js';
+import { Notifier } from '@airbrake/browser';
 import airbrakeMiddleware from 'redux-airbrake';
 ```
 
 #### 3. Configure & add middleware
 ``` js
-const airbrake = new AirbrakeClient({
+const airbrake = new Notifier({
     projectId: '******',
     projectKey: '**************'
 });
