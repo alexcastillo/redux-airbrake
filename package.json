@@ -7,7 +7,7 @@
   "lock": false,
   "scripts": {
     "build": "webpack",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "dist"
@@ -31,17 +31,18 @@
   },
   "homepage": "https://github.com/alexcastillo/redux-airbrake#readme",
   "peerDependencies": {
-    "redux": "3.*",
-    "airbrake-js": "0.*"
+    "redux": "3.* || 4.*",
+    "@airbrake/browser": "1.*"
   },
   "devDependencies": {
-    "airbrake-js": "^0.5.9",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-syntax-async-functions": "^6.13.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "webpack": "^3.8.1"
+    "@airbrake/browser": "^1.0.6",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-async-generator-functions": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }
