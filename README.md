@@ -57,7 +57,7 @@ It's possible to annotate error notices with all sorts of useful information at 
 
 ``` js
 const errorMiddleware = airbrakeMiddleware(airbrake, {
-    noticeAnnotatios: { context: { environment: window.ENV } }
+    noticeAnnotations: { context: { environment: window.ENV } }
 });
 ```
 
