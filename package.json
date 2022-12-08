@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "Redux middleware for Airbrake error logging",
   "main": "dist/redux-middleware.js",
-  "module": "src/index.js",
+  "module": "dist/redux-middleware.js",
   "lock": false,
   "scripts": {
     "build": "webpack",
